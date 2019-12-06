@@ -9,7 +9,7 @@ pipeline {
     stage('build') {
       steps {
           withEnv(["HOME=${env.WORKSPACE}"]){
-            sh 'pip install -r requirements.txt --user'
+            sh 'pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  -r requirements.txt --user'
           }
       }
     }
