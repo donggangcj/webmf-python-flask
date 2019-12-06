@@ -1,12 +1,11 @@
 pipeline {
-  agent { 
-      label 'Slave-01'
-  }
+  agent none
   stages {
     stage('test') {
       agent { 
         docker { 
             image 'python:3.7.2' 
+            label 'Slave-01'
         } 
       }
       steps {
@@ -22,6 +21,9 @@ pipeline {
       }    
     }
     stage('build') {
+      agent { 
+          label 'Slave-01'
+      }
       steps{
         sh  'docker build -t flask-demo .'
       }
